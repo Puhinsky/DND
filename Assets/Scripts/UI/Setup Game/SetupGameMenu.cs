@@ -1,34 +1,50 @@
+using Puhinsky.DND.Core.GameState;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-[RequireComponent(typeof(UIDocument))]
-public class SetupGameMenu : MonoBehaviour
+namespace Puhinsky.DND.UI
 {
-    private VisualElement _root;
-
-    private const string _tabCssClass = "setup-tab";
-
-    private void Awake()
+    [RequireComponent(typeof(GameStateMachine))]
+    [RequireComponent(typeof(UIDocument))]
+    public class SetupGameMenu : MonoBehaviour
     {
-        _root = GetComponent<UIDocument>().rootVisualElement;
-    }
+        private VisualElement _root;
 
-    private void Start()
-    {
-        var tabbedView = new TabView();
+        private void Awake()
+        {
+            _root = GetComponent<UIDocument>().rootVisualElement;
 
-        var characteristicsTab = new TabController("Характеристики", _tabCssClass);
-        var characterTab = new TabController("Персонажи", _tabCssClass);
-        var mapTab = new TabController("Карта", _tabCssClass);
+            var gameState = GetComponent<GameStateMachine>().Model.State;
+            gameState.Changed += OnGameStateChanged;
+            OnGameStateChanged(gameState.Value);
+        }
 
-        characteristicsTab.Build(tabbedView, true);
-        characterTab.Build(tabbedView);
-        mapTab.Build(tabbedView);
+        private void Start()
+        {
+            var container = new VisualElement();
+            container.style.flexDirection = FlexDirection.Row;
+            container.style.flexGrow = 1;
 
-        var characteristicsList = new CharacteristicsListController("Постоянные характеристики");
+            var characteristicsList = new PlayerListController("Игроки");
+            container.Add(characteristicsList);
 
-        characteristicsList.Build(characteristicsTab.GetTarget());
+            var mapSetupController = new MapSetupController();
+            container.Add(mapSetupController);
 
-        _root.Add(tabbedView);
+            _root.Add(container);
+        }
+
+        private void OnGameStateChanged(GameStateType state)
+        {
+            switch (state)
+            {
+                case GameStateType.Game:
+                    _root.style.display = DisplayStyle.None;
+                    break;
+                case GameStateType.Setup:
+                    _root.style.display = DisplayStyle.Flex;
+                    break;
+            }
+        }
     }
 }
