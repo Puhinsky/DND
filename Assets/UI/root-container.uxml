@@ -1,0 +1,5 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/Css/player-style.uss?fileID=7433441132597879392&amp;guid=394f485cfb4d5a840851a7a244bf4ab7&amp;type=3#player-style" />
+    <Style src="project://database/Assets/UI/Css/map-style.uss?fileID=7433441132597879392&amp;guid=335880ba8099dca489ea97953d5046b9&amp;type=3#map-style" />
+    <Puhinsky.DND.UI.PlayerView class="player" />
+</ui:UXML>

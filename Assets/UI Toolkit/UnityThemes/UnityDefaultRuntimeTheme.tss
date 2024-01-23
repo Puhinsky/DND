@@ -1,5 +1,5 @@
 @import url("unity-theme://default");
 
-@import url("/Assets/UI/Css/tab-style.uss");
-@import url("/Assets/UI/Css/characteristics-style.uss");
+@import url("/Assets/UI/Css/player-style.uss");
+
 
