@@ -5,15 +5,28 @@ using UnityEngine.UIElements;
 
 namespace Puhinsky.DND.UI
 {
-    public class PlayerListController : ListController<PlayerModel, PlayerUiView>
+    [UxmlElement]
+    public partial class PlayerListController : ListController<PlayerModel, PlayerUiView>
     {
         private readonly List<PlayerView> _gameViews = new();
 
-        private const string itemCssClass = "player";
+        private const string _itemCssClass = "player";
+        private const string _listCssClass = "player-list";
 
-        public PlayerListController(string listLabel) : base(listLabel, itemCssClass)
+        public PlayerListController() : base("Player List", _itemCssClass)
+        {
+            Init();
+        }
+
+        public PlayerListController(string listLabel) : base(listLabel, _itemCssClass)
+        {
+            Init();
+        }
+
+        private void Init()
         {
             style.flexGrow = 1;
+            AddToClassList(_listCssClass);
             ListView.virtualizationMethod = CollectionVirtualizationMethod.DynamicHeight;
         }
 

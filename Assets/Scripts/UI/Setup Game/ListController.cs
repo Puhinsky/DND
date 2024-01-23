@@ -15,6 +15,7 @@ public abstract class ListController<TModel, TView> : VisualElement where TModel
 
     private const string _addItemLabel = "+";
     private const string _removeItemLabel = "-";
+    private const string _buttonContainerClass = "list-button-container";
 
     public ListController(string listLabel, string itemCssClass)
     {
@@ -22,6 +23,7 @@ public abstract class ListController<TModel, TView> : VisualElement where TModel
         controlButtonsContainer.style.flexDirection = FlexDirection.Row;
         controlButtonsContainer.Add(GetButtonWithLabel(_addItemLabel, OnAddItem));
         controlButtonsContainer.Add(GetButtonWithLabel(_removeItemLabel, OnRemoveItem));
+        controlButtonsContainer.AddToClassList(_buttonContainerClass);
 
         _container.Add(new Label(listLabel));
         _container.Add(controlButtonsContainer);

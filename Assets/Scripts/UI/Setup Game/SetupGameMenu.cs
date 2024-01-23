@@ -24,9 +24,10 @@ namespace Puhinsky.DND.UI
             var container = new VisualElement();
             container.style.flexDirection = FlexDirection.Row;
             container.style.flexGrow = 1;
+            container.AddToClassList("root");
 
-            var characteristicsList = new PlayerListController("Игроки");
-            container.Add(characteristicsList);
+            var playersList = new PlayerListController("Игроки");
+            container.Add(playersList);
 
             var mapSetupController = new MapSetupController();
             container.Add(mapSetupController);

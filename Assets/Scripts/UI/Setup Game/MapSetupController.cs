@@ -2,21 +2,22 @@ using Puhinsky.DND.Models;
 using SimpleFileBrowser;
 using System.IO;
 using System.Linq;
-using Unity.Properties;
 using UnityEngine;
 using UnityEngine.UIElements;
 
 namespace Puhinsky.DND.UI
 {
-    public class MapSetupController : VisualElement
+    [UxmlElement]
+    public partial class MapSetupController : VisualElement
     {
         private readonly Button _importMap = new();
         private readonly IntegerField _mapScale = new(_scaleLabel, 1000);
         private readonly VisualElement _previewMap = new();
 
-        private const string _importLabel = "Импортировать карту";
+        private const string _importLabel = "Импортировать карту ...";
         private const string _scaleLabel = "Пикселей на метр";
 
+        private const string _mapSetupClass = "map-setup";
         private const string _buttonClass = "map-button";
         private const string _previewClass = "map-preview";
 
@@ -44,6 +45,7 @@ namespace Puhinsky.DND.UI
             Add(_importMap);
             Add(_mapScale);
             Add(_previewMap);
+            AddToClassList(_mapSetupClass);
             _importMap.AddToClassList(_buttonClass);
             _previewMap.AddToClassList(_previewClass);
         }

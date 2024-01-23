@@ -18,19 +18,25 @@ namespace Puhinsky.DND.UI
         private const string _nameLabel = "Имя";
         private const string _powerLabel = "Сила";
 
+        private const string _containerCssClass = "player-container";
+
         public PlayerUiView()
         {
+            var container = new VisualElement();
+            container.AddToClassList(_containerCssClass);
+            Add(container);
+
             _name.label = _nameLabel;
-            Add(_name);
+            container.Add(_name);
             _colorPickView.Changed += OnPickColorChanged;
-            Add(_colorPickView);
+            container.Add(_colorPickView);
             var foldout = new Foldout
             {
                 value = false
             };
             _power.label = _powerLabel;
             foldout.Add(_power);
-            Add(foldout);
+            container.Add(foldout);
         }
 
         public void BindModel(PlayerModel model)

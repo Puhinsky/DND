@@ -23,6 +23,9 @@ namespace Puhinsky.DND.UI
 
         private void OnUpdate()
         {
+            if (_model.Texture.Value == null)
+                return;
+
             _renderer.sprite = Sprite.Create(_model.Texture.Value, new Rect(0, 0, _model.Texture.Value.width, _model.Texture.Value.height), new Vector2(0.5f, 0.5f), _model.PixelsPerUnit.Value, 0, SpriteMeshType.FullRect);
         }
     }
