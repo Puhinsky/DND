@@ -23,6 +23,10 @@
     -unity-background-image-tint-color: rgb(166, 166, 166);
 }
 
+.dice .unity-foldout {
+    flex-direction: column-reverse;
+}
+
 .dice .unity-foldout:checked {
     width: 480px;
 }
