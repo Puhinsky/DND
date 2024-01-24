@@ -3,6 +3,8 @@
 @import url("/Assets/UI/Css/player-style.uss");
 @import url("/Assets/UI/Css/map-style.uss");
 @import url("/Assets/UI/Css/root-style.uss");
+@import url("/Assets/UI/Css/dice-style.uss");
+
 
 
 

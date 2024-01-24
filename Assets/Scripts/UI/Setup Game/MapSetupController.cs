@@ -38,7 +38,6 @@ namespace Puhinsky.DND.UI
 
             style.flexGrow = 1;
             _previewMap.style.flexGrow = 1;
-            _previewMap.style.backgroundSize = new BackgroundSize(BackgroundSizeType.Contain);
             _importMap.text = _importLabel;
             _importMap.clicked += OnMapImportBegin;
             Model.PixelsPerUnit.BindView(_mapScale, nameof(_mapScale.value), BindingMode.TwoWay);

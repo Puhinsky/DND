@@ -6,6 +6,9 @@
     -unity-text-outline-color: rgb(0, 0, 0);
     text-shadow: 1px 1px 1px rgb(0, 0, 0);
     align-self: center;
+    width: 50%;
+    padding-left: 8px;
+    align-items: center;
 }
 
 .map-setup .unity-base-text-field__input {
@@ -16,7 +19,6 @@
 }
 
 .map-button {
-    background-color: rgb(96, 35, 35);
     border-top-left-radius: 16px;
     border-top-right-radius: 16px;
     border-bottom-right-radius: 16px;
@@ -30,4 +32,28 @@
     border-right-width: 2px;
     border-bottom-width: 2px;
     border-left-width: 2px;
+    background-image: resource('Paper');
+    -unity-background-image-tint-color: rgb(166, 166, 166);
+    -unity-background-scale-mode: scale-and-crop;
+}
+
+.map-preview {
+    width: 100%;
+    margin-top: 48px;
+    border-top-width: 8px;
+    border-right-width: 8px;
+    border-bottom-width: 8px;
+    border-left-width: 8px;
+    border-left-color: rgb(255, 255, 255);
+    border-right-color: rgb(255, 255, 255);
+    border-top-color: rgb(255, 255, 255);
+    border-bottom-color: rgb(255, 255, 255);
+    border-top-left-radius: 32px;
+    border-top-right-radius: 32px;
+    border-bottom-right-radius: 32px;
+    border-bottom-left-radius: 32px;
+}
+
+.map-setup #unity-text-input {
+    width: 128px;
 }

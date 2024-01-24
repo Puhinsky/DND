@@ -51,6 +51,8 @@
     -unity-text-outline-color: rgb(0, 0, 0);
     text-shadow: 1px 1px 1px rgb(0, 0, 0);
     -unity-text-align: upper-center;
+    width: 50%;
+    padding-right: 8px;
 }
 
 .player-list .unity-button {
@@ -69,9 +71,19 @@
     border-right-color: rgb(0, 0, 0);
     border-top-color: rgb(0, 0, 0);
     border-bottom-color: rgb(0, 0, 0);
-    background-color: rgb(96, 35, 35);
+    background-image: resource('Paper');
+    -unity-background-image-tint-color: rgb(166, 166, 166);
 }
 
 .player-list .list-button-container {
     justify-content: center;
+    min-height: 64px;
+}
+
+.player-list .color-pick .unity-label {
+    min-width: auto;
+}
+
+.player-list .color-pick #unity-drag-container {
+    width: 112px;
 }

@@ -13,6 +13,8 @@ namespace Puhinsky.DND.UI
         private readonly SliderInt _green = new(0, 255);
         private readonly SliderInt _blue = new(0, 255);
 
+        private const string _colorPickCssClass = "color-pick";
+
         public ColorPickView()
         {
             style.flexDirection = FlexDirection.Row;
@@ -30,6 +32,7 @@ namespace Puhinsky.DND.UI
             Add(_red);
             Add(_green);
             Add(_blue);
+            AddToClassList(_colorPickCssClass);
         }
 
         public void SetColor(Color color)

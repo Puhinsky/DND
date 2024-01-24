@@ -8,31 +8,41 @@ namespace Puhinsky.DND.UI
     [RequireComponent(typeof(UIDocument))]
     public class SetupGameMenu : MonoBehaviour
     {
-        private VisualElement _root;
+        private VisualElement _setupContainer;
+        private VisualElement _gameContainer;
+
+        private const string _setupContainerCssClass = "setup-container";
+        private const string _gameContainerCssClass = "game-container";
 
         private void Awake()
         {
-            _root = GetComponent<UIDocument>().rootVisualElement;
+            var root = GetComponent<UIDocument>().rootVisualElement;
+
+            _gameContainer = new();
+            _gameContainer.style.flexDirection = FlexDirection.Row;
+            _gameContainer.style.flexGrow = 1;
+            _gameContainer.AddToClassList(_gameContainerCssClass);
+
+            _setupContainer = new();
+            _setupContainer.style.flexDirection = FlexDirection.Row;
+            _setupContainer.style.flexGrow = 1;
+            _setupContainer.AddToClassList(_setupContainerCssClass);
+
+            var playersList = new PlayerListController("Персонажи");
+            _setupContainer.Add(playersList);
+
+            var mapSetupController = new MapSetupController();
+            _setupContainer.Add(mapSetupController);
+
+            var bottomPanelController = new BottomPanelController();
+            _gameContainer.Add(bottomPanelController);
+
+            root.Add(_gameContainer);
+            root.Add(_setupContainer);
 
             var gameState = GetComponent<GameStateMachine>().Model.State;
             gameState.Changed += OnGameStateChanged;
             OnGameStateChanged(gameState.Value);
-        }
-
-        private void Start()
-        {
-            var container = new VisualElement();
-            container.style.flexDirection = FlexDirection.Row;
-            container.style.flexGrow = 1;
-            container.AddToClassList("root");
-
-            var playersList = new PlayerListController("Игроки");
-            container.Add(playersList);
-
-            var mapSetupController = new MapSetupController();
-            container.Add(mapSetupController);
-
-            _root.Add(container);
         }
 
         private void OnGameStateChanged(GameStateType state)
@@ -40,10 +50,12 @@ namespace Puhinsky.DND.UI
             switch (state)
             {
                 case GameStateType.Game:
-                    _root.style.display = DisplayStyle.None;
+                    _gameContainer.style.display = DisplayStyle.Flex;
+                    _setupContainer.style.display = DisplayStyle.None;
                     break;
                 case GameStateType.Setup:
-                    _root.style.display = DisplayStyle.Flex;
+                    _gameContainer.style.display = DisplayStyle.None;
+                    _setupContainer.style.display = DisplayStyle.Flex;
                     break;
             }
         }

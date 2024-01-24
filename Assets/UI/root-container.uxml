@@ -2,5 +2,6 @@
     <Style src="project://database/Assets/UI/Css/player-style.uss?fileID=7433441132597879392&amp;guid=394f485cfb4d5a840851a7a244bf4ab7&amp;type=3#player-style" />
     <Style src="project://database/Assets/UI/Css/map-style.uss?fileID=7433441132597879392&amp;guid=335880ba8099dca489ea97953d5046b9&amp;type=3#map-style" />
     <Style src="project://database/Assets/UI/Css/root-style.uss?fileID=7433441132597879392&amp;guid=d871b9e89c215e34d8bfc52bf97ce1a2&amp;type=3#root-style" />
-    <Puhinsky.DND.UI.PlayerUiView />
+    <Style src="project://database/Assets/UI/Css/dice-style.uss?fileID=7433441132597879392&amp;guid=7bbb1ca67a0e1b144bb36da73936c662&amp;type=3#dice-style" />
+    <Puhinsky.DND.UI.MapSetupController />
 </ui:UXML>
