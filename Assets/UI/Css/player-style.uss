@@ -43,6 +43,12 @@
     -unity-text-outline-width: 0;
 }
 
+.player .unity-foldout #unity-checkmark {
+    background-image: resource('characteristics');
+    width: 48px;
+    height: 48px;
+}
+
 .player-list {
     font-size: 32px;
     color: rgb(255, 255, 255);

@@ -25,6 +25,8 @@ namespace Puhinsky.DND.Models
         public DependentReactiveProperty<int> Evasion { get; private set; }
         public DependentReactiveProperty<int> MagicDamage { get; private set; }
 
+        public ReactiveProperty<int> Health { get; private set; } = new();
+
         private readonly List<PreprocessorReactiveProperty<int>> _staticCharacteristics = new();
 
         private const int _minPointsByCharacteristic = 1;

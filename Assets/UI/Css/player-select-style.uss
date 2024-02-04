@@ -32,3 +32,16 @@
     height: 48px;
     background-image: resource('person');
 }
+
+.player-select .unity-base-field {
+    flex-grow: 1;
+}
+
+.player-select .unity-integer-field .unity-label {
+    flex-grow: 1;
+}
+
+.player-select .unity-integer-field .unity-base-text-field__input {
+    min-width: 160px;
+    max-width: 160px;
+}
