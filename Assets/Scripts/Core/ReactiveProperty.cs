@@ -8,6 +8,7 @@ namespace Puhinsky.DND.Core
     public class ReactiveProperty<T>
     {
         public event Action<T> Changed;
+        public event Action TypelessChanged;
 
         private T _value;
 
@@ -19,6 +20,7 @@ namespace Puhinsky.DND.Core
             {
                 _value = value;
                 Changed?.Invoke(_value);
+                TypelessChanged?.Invoke();
             }
         }
 
@@ -46,6 +48,7 @@ namespace Puhinsky.DND.Core
         public void Notify()
         {
             Changed?.Invoke(_value);
+            TypelessChanged?.Invoke();
         }
     }
 }

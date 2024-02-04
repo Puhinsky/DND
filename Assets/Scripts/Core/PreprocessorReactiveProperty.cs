@@ -31,6 +31,11 @@
             }
         }
 
+        public override void SetWithoutNotify(T value)
+        {
+            SetWithoutNotify(_preprocessor(value));
+        }
+
         public void SetPreprocessor(Preprocessor preprocessor)
         {
             _preprocessor = preprocessor;
