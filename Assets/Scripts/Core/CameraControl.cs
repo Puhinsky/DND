@@ -13,8 +13,8 @@ namespace Puhinsky.DND.Core
         [SerializeField] private float _minZoom = 1f;
         [SerializeField] private float _maxZoom = 10f;
         [SerializeField][Range(0.1f, 1f)] private float _zoomSensivity = 0.5f;
-
         [SerializeField][Range(0.0001f, 0.05f)] private float _moveSensivity = 0.003f;
+        [SerializeField] AnimationCurve _sensivityMap = AnimationCurve.Constant(0f, 1f, 1f);
 
         private const string _mouseScrollingAction = "Zoom";
         private const string _moveMouseAction = "Camera Move";
@@ -40,7 +40,7 @@ namespace Puhinsky.DND.Core
         private void OnZoom(CallbackContext context)
         {
             if (_gameModel.State.Value == GameStateType.Game)
-                Camera.main.orthographicSize = Mathf.Clamp(Camera.main.orthographicSize + context.ReadValue<Vector2>().y * _zoomSensivity, _minZoom, _maxZoom);
+                Camera.main.orthographicSize = Mathf.Clamp(Camera.main.orthographicSize + context.ReadValue<Vector2>().y * _zoomSensivity * _sensivityMap.Evaluate((Camera.main.orthographicSize - _minZoom) / (_maxZoom - _minZoom)), _minZoom, _maxZoom);
         }
 
         private void OnCameraMove(CallbackContext context)
