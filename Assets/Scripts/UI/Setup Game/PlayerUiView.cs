@@ -1,6 +1,4 @@
-using Puhinsky.DND.Core;
 using Puhinsky.DND.Models;
-using Unity.Properties;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -18,9 +16,15 @@ namespace Puhinsky.DND.UI
         private readonly IntegerField _intelligence = new() { label = PlayerLabels.Intelligence };
         private readonly IntegerField _stamina = new() { label = PlayerLabels.Stamina };
         private readonly IntegerField _magic = new() { label = PlayerLabels.Magic };
-        private readonly IntegerField _fortune = new() { label = PlayerLabels.Magic };
+        private readonly IntegerField _fortune = new() { label = PlayerLabels.Fortune };
         private readonly IntegerField _charisma = new() { label = PlayerLabels.Charisma };
-        private readonly IntegerField _total = new() { label = "Всего" };
+        private readonly IntegerField _total = new() { label = "Всего", isReadOnly = true };
+        private readonly IntegerField _damage = new() { label = PlayerLabels.Damage, isReadOnly = true };
+        private readonly IntegerField _health = new() { label = PlayerLabels.Health, isReadOnly = true };
+        private readonly IntegerField _mana = new() { label = PlayerLabels.Mana, isReadOnly = true };
+        private readonly IntegerField _speed = new() { label = PlayerLabels.Speed, isReadOnly = true };
+        private readonly IntegerField _evasion = new() { label = PlayerLabels.Evasion, isReadOnly = true };
+        private readonly IntegerField _magicDamage = new() { label = PlayerLabels.MagicDamage, isReadOnly = true };
 
         private const string _containerCssClass = "player-container";
 
@@ -45,6 +49,13 @@ namespace Puhinsky.DND.UI
             foldout.Add(_magic);
             foldout.Add(_fortune);
             foldout.Add(_charisma);
+            foldout.Add(_total);
+            foldout.Add(_damage);
+            foldout.Add(_health);
+            foldout.Add(_mana);
+            foldout.Add(_speed);
+            foldout.Add(_evasion);
+            foldout.Add(_magicDamage);
             container.Add(foldout);
         }
 
@@ -71,6 +82,13 @@ namespace Puhinsky.DND.UI
             _model.Magic.BindView(_magic, nameof(_magic.value), BindingMode.TwoWay);
             _model.Fortune.BindView(_fortune, nameof(_fortune.value), BindingMode.TwoWay);
             _model.Charisma.BindView(_charisma, nameof(_charisma.value), BindingMode.TwoWay);
+            _model.StaticTotal.BindView(_total, nameof(_total.value), BindingMode.ToTarget);
+            _model.Damage.BindView(_damage, nameof(_damage.value), BindingMode.ToTarget);
+            _model.DefaultHealth.BindView(_health, nameof(_health.value), BindingMode.ToTarget);
+            _model.Mana.BindView(_mana, nameof(_mana.value), BindingMode.ToTarget);
+            _model.Speed.BindView(_speed, nameof(_speed.value), BindingMode.ToTarget);
+            _model.Evasion.BindView(_evasion, nameof(_evasion.value), BindingMode.ToTarget);
+            _model.MagicDamage.BindView(_magicDamage, nameof(_magicDamage.value), BindingMode.ToTarget);
 
             _model.Color.Changed += OnColorChanged;
             _colorPickView.SetColor(_model.Color.Value);

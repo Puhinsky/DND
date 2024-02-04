@@ -1,5 +1,4 @@
 using Puhinsky.DND.Core;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -10,23 +9,26 @@ namespace Puhinsky.DND.Models
     {
         public ReactiveProperty<string> Name { get; private set; } = new("Player");
         public ReactiveProperty<Color> Color { get; private set; } = new(UnityEngine.Color.black);
-        public PreprocessorReactiveProperty<int> Power { get; set; } = new(_minPointsByCharacteristic);
-        public PreprocessorReactiveProperty<int> Agility { get; set; } = new(_minPointsByCharacteristic);
-        public PreprocessorReactiveProperty<int> Intelligence { get; set; } = new(_minPointsByCharacteristic);
-        public PreprocessorReactiveProperty<int> Stamina { get; set; } = new(_minPointsByCharacteristic);
-        public PreprocessorReactiveProperty<int> Magic { get; set; } = new(_minPointsByCharacteristic);
-        public PreprocessorReactiveProperty<int> Fortune { get; set; } = new(_minPointsByCharacteristic);
-        public PreprocessorReactiveProperty<int> Charisma { get; set; } = new(_minPointsByCharacteristic);
+        public PreprocessorReactiveProperty<int> Power { get; private set; } = new(_minPointsByCharacteristic);
+        public PreprocessorReactiveProperty<int> Agility { get; private set; } = new(_minPointsByCharacteristic);
+        public PreprocessorReactiveProperty<int> Intelligence { get; private set; } = new(_minPointsByCharacteristic);
+        public PreprocessorReactiveProperty<int> Stamina { get; private set; } = new(_minPointsByCharacteristic);
+        public PreprocessorReactiveProperty<int> Magic { get; private set; } = new(_minPointsByCharacteristic);
+        public PreprocessorReactiveProperty<int> Fortune { get; private set; } = new(_minPointsByCharacteristic);
+        public PreprocessorReactiveProperty<int> Charisma { get; private set; } = new(_minPointsByCharacteristic);
+        public DependentReactiveProperty<int> StaticTotal { get; private set; }
 
-        public int Damage => throw new NotImplementedException();
-        public int Health => throw new NotImplementedException();
-        public int Mana => throw new NotImplementedException();
-        public int Speed => throw new NotImplementedException();
+        public DependentReactiveProperty<int> Damage { get; private set; }
+        public DependentReactiveProperty<int> DefaultHealth { get; private set; }
+        public DependentReactiveProperty<int> Mana { get; private set; }
+        public DependentReactiveProperty<int> Speed { get; private set; }
+        public DependentReactiveProperty<int> Evasion { get; private set; }
+        public DependentReactiveProperty<int> MagicDamage { get; private set; }
 
         private readonly List<PreprocessorReactiveProperty<int>> _staticCharacteristics = new();
 
         private const int _minPointsByCharacteristic = 1;
-        private const int _maxTotalPoints = 20;
+        private const int _maxTotalPoints = 27;
 
         public PlayerModel()
         {
@@ -42,16 +44,37 @@ namespace Puhinsky.DND.Models
             {
                 characterstic.SetPreprocessor(GetProprocessor(characterstic));
             }
+
+            StaticTotal = new(() => _staticCharacteristics.Sum(x => x.Value));
+            StaticTotal.AddDependency(Power, Agility, Intelligence, Stamina, Magic, Fortune, Charisma);
+
+            Damage = new(() => 1 + 2 * Power.Value);
+            Damage.AddDependency(Power);
+
+            DefaultHealth = new(() => 10 + 10 * Power.Value + 10 * Stamina.Value);
+            DefaultHealth.AddDependency(Power, Stamina);
+
+            Mana = new(() => 10 + 5 * Magic.Value);
+            Mana.AddDependency(Magic);
+
+            Speed = new(() => 4 + 2 * Agility.Value + 3 * Stamina.Value);
+            Speed.AddDependency(Agility, Stamina);
+
+            Evasion = new(() => Agility.Value + Fortune.Value);
+            Evasion.AddDependency(Agility, Fortune);
+
+            MagicDamage = new(() => Mana.Value / 2 + Intelligence.Value);
+            MagicDamage.AddDependency(Mana, Intelligence);
         }
 
         private PreprocessorReactiveProperty<int>.Preprocessor GetProprocessor(ReactiveProperty<int> characteristic)
         {
-            return (value) => Mathf.Clamp(value, _minPointsByCharacteristic, _maxTotalPoints - GetPointWithout(characteristic));
+            return (value) => Mathf.Clamp(value, _minPointsByCharacteristic, _maxTotalPoints - GetPointsWithout(characteristic));
         }
 
-        private int GetPointWithout(ReactiveProperty<int> value)
+        private int GetPointsWithout(ReactiveProperty<int> value)
         {
-            return _staticCharacteristics.Where(x => x != value).Select(x => x.Value).Sum();
+            return _staticCharacteristics.Where(x => x != value).Sum(x => x.Value);
         }
     }
 }

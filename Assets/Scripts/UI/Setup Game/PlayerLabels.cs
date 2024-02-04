@@ -10,5 +10,11 @@ namespace Puhinsky.DND.UI
         public static readonly string Magic = "Магия";
         public static readonly string Fortune = "Удача";
         public static readonly string Charisma = "Харизма";
+        public static readonly string Damage = "Урон";
+        public static readonly string Health = "Здоровье";
+        public static readonly string Mana = "Мана";
+        public static readonly string Speed = "Скорость";
+        public static readonly string Evasion = "Уклонение";
+        public static readonly string MagicDamage = "Урон заклинаний";
     }
 }
