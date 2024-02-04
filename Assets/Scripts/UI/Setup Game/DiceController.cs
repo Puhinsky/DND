@@ -59,13 +59,16 @@ namespace Puhinsky.DND.UI
             if (value.InRange(3, 8))
                 return new Status { Text = "Неудача", Color = Color.yellow };
 
+            if(value.InRange(9,12))
+                return new Status { Text = "Норм", Color = Color.blue };
+
             if (value.InRange(13, 18))
                 return new Status { Text = "Удача", Color = Color.green };
 
-            if (value.InRange(15, 20))
+            if (value.InRange(19, 20))
                 return new Status { Text = "Критическая удача", Color = Color.magenta };
 
-            return new Status { Text = "Норм", Color = Color.blue };
+            return new Status { Text = "Ты как сюда попал? ", Color = Color.black };
         }
 
         private struct Status

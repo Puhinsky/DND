@@ -5,7 +5,8 @@
         "puhinsky.dnd.models",
         "SimpleFileBrowser.Runtime",
         "puhinsky.dnd.core",
-        "Unity.InputSystem"
+        "Unity.InputSystem",
+        "Unity.TextMeshPro"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

@@ -1,15 +1,18 @@
 fileFormatVersion: 2
-guid: 0618d095e320237479359b6466bb3fe6
+guid: 0d7e14e7e97cccd4ba3df8c920bbfa00
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -2413806693520163455
-    second: Circle_0
+      213: 4954345118388884524
+    second: pngwing.com (1)_0
+  - first:
+      213: 7073813113543266139
+    second: pngwing.com (1)_1
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
     mipMapMode: 0
-    enableMipMap: 0
+    enableMipMap: 1
     sRGBTexture: 1
     linearTexture: 0
     fadeOut: 0
@@ -51,13 +54,13 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 1000
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
   alphaIsTransparency: 1
   spriteTessellationDetail: -1
-  textureType: 8
+  textureType: 0
   textureShape: 1
   singleChannelComponent: 0
   flipbookRows: 1
@@ -126,13 +129,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Circle_0
+      name: pngwing.com (1)_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
-        width: 256
-        height: 256
+        y: 13
+        width: 512
+        height: 220
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -141,8 +144,30 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 18d3544e99f608ed0800000000000000
-      internalID: -2413806693520163455
+      spriteID: c24924cc2ae51c440800000000000000
+      internalID: 4954345118388884524
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pngwing.com (1)_1
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 203
+        width: 296
+        height: 296
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b5f0f305c8b3b2260800000000000000
+      internalID: 7073813113543266139
       vertices: []
       indices: 
       edges: []
@@ -159,7 +184,8 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Circle_0: -2413806693520163455
+      pngwing.com (1)_0: 4954345118388884524
+      pngwing.com (1)_1: 7073813113543266139
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
