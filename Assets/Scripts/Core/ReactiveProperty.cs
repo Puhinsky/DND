@@ -12,7 +12,7 @@ namespace Puhinsky.DND.Core
         private T _value;
 
         [SerializeField]
-        public T Value
+        public virtual T Value
         {
             get => _value;
             set
@@ -30,15 +30,15 @@ namespace Puhinsky.DND.Core
 
         public void BindView(VisualElement view, BindingId binding, BindingMode mode)
         {
-            view.dataSource = this;
             view.SetBinding(binding, new DataBinding()
             {
+                dataSource = this,
                 dataSourcePath = PropertyPath.FromName(nameof(Value)),
                 bindingMode = mode
             });
         }
 
-        public void SetWithoutNotify(T value)
+        public virtual void SetWithoutNotify(T value)
         {
             _value = value;
         }
