@@ -1,5 +1,5 @@
 .setup-container {
-    background-image: resource('Leather');
+    background-image: resource('SPOILER_image');
     -unity-background-image-tint-color: rgba(255, 255, 255, 0.78);
     -unity-background-scale-mode: scale-and-crop;
     padding-top: 64px;
