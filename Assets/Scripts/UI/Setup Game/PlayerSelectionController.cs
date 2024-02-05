@@ -6,7 +6,14 @@ namespace Puhinsky.DND.UI
 {
     public class PlayerSelectionController : VisualElement
     {
+        private PlayerModel _player;
+
         private readonly Foldout _foldout = new() { value = false };
+        private readonly UnsignedIntegerField _appliedDamage = new() { label = "Нанести" };
+        private readonly Button _applyDamage = new() { text = "ОК"};
+        private readonly UnsignedIntegerField _appliedHeal = new() { label = "Вылечить" };
+        private readonly Button _applyHeal = new() { text = "ОК" };
+        private readonly Button _resetHealth = new() { text = "Восстановить" };
         private readonly IntegerField _power = new() { label = PlayerLabels.Power, isReadOnly = true };
         private readonly IntegerField _agility = new() { label = PlayerLabels.Agility, isReadOnly = true };
         private readonly IntegerField _intelligence = new() { label = PlayerLabels.Intelligence, isReadOnly = true };
@@ -29,25 +36,55 @@ namespace Puhinsky.DND.UI
             handler.PlayerSelected += OnPlayerSelected;
             handler.PlayerDeselected += OnPlayerDeselected;
 
-            _foldout.Add(_power);
-            _foldout.Add(_agility);
-            _foldout.Add(_intelligence);
-            _foldout.Add(_stamina);
-            _foldout.Add(_magic);
-            _foldout.Add(_fortune);
-            _foldout.Add(_charisma);
-            _foldout.Add(_damage);
-            _foldout.Add(_mana);
-            _foldout.Add(_health);
-            _foldout.Add(_speed);
-            _foldout.Add(_evasion);
-            _foldout.Add(_magicDamage);
+            var damageContainer = new VisualElement();
+            damageContainer.style.flexDirection = FlexDirection.Row;
+            damageContainer.Add(_appliedDamage);
+            damageContainer.Add(_applyDamage);
+            _applyDamage.clicked += () =>
+            {
+                _player.ApplyDamage((int)_appliedDamage.value);
+                _appliedDamage.value = 0;
+            };
+
+            var healContainer = new VisualElement();
+            healContainer.style.flexDirection = FlexDirection.Row;
+            healContainer.Add(_appliedHeal);
+            healContainer.Add(_applyHeal);
+            _applyHeal.clicked += () =>
+            {
+                _player.ApplyHeal((int)_appliedHeal.value);
+                _appliedHeal.value = 0;
+            };
+
+            _resetHealth.clicked += () => _player.ResetHealth();
+
+            var scrollView = new ScrollView();
+
+            scrollView.Add(damageContainer);
+            scrollView.Add(healContainer);
+            scrollView.Add(_resetHealth);
+            scrollView.Add(_power);
+            scrollView.Add(_agility);
+            scrollView.Add(_intelligence);
+            scrollView.Add(_stamina);
+            scrollView.Add(_magic);
+            scrollView.Add(_fortune);
+            scrollView.Add(_charisma);
+            scrollView.Add(_damage);
+            scrollView.Add(_mana);
+            scrollView.Add(_health);
+            scrollView.Add(_speed);
+            scrollView.Add(_evasion);
+            scrollView.Add(_magicDamage);
+            _foldout.Add(scrollView);
             Add(_foldout);
             AddToClassList(_playerSelectCssClass);
         }
 
         private void OnPlayerSelected(PlayerModel player)
         {
+            _player = player;
+
             player.Name.BindView(_foldout, nameof(_foldout.text), BindingMode.ToTarget);
             _foldout.style.color = player.Color.Value;
             player.Power.BindView(_power, nameof(_power.value), BindingMode.ToTarget);

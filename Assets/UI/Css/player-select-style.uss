@@ -20,6 +20,7 @@
     background-image: resource('Paper');
     -unity-background-scale-mode: scale-and-crop;
     -unity-background-image-tint-color: rgb(166, 166, 166);
+    max-height: 860px;
 }
 
 .player-select .unity-foldout {
@@ -37,11 +38,20 @@
     flex-grow: 1;
 }
 
-.player-select .unity-integer-field .unity-label {
+.player-select .unity-base-text-field .unity-label {
     flex-grow: 1;
 }
 
-.player-select .unity-integer-field .unity-base-text-field__input {
+.player-select .unity-base-text-field .unity-base-text-field__input {
     min-width: 160px;
     max-width: 160px;
+}
+
+.player-select .unity-button {
+    -unity-background-scale-mode: scale-and-crop;
+    background-image: resource('Leather');
+    border-top-left-radius: 16px;
+    border-top-right-radius: 16px;
+    border-bottom-right-radius: 16px;
+    border-bottom-left-radius: 16px;
 }

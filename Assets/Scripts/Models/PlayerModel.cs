@@ -25,7 +25,7 @@ namespace Puhinsky.DND.Models
         public DependentReactiveProperty<int> Evasion { get; private set; }
         public DependentReactiveProperty<int> MagicDamage { get; private set; }
 
-        public ReactiveProperty<int> Health { get; private set; } = new();
+        public PreprocessorReactiveProperty<int> Health { get; private set; } = new((x) => Mathf.Max(x, 0));
 
         private readonly List<PreprocessorReactiveProperty<int>> _staticCharacteristics = new();
 
@@ -55,6 +55,7 @@ namespace Puhinsky.DND.Models
 
             DefaultHealth = new(() => 10 + 10 * Power.Value + 10 * Stamina.Value);
             DefaultHealth.AddDependency(Power, Stamina);
+            DefaultHealth.TypelessChanged += ResetHealth;
 
             Mana = new(() => 10 + 5 * Magic.Value);
             Mana.AddDependency(Magic);
@@ -67,6 +68,8 @@ namespace Puhinsky.DND.Models
 
             MagicDamage = new(() => Mana.Value / 2 + Intelligence.Value);
             MagicDamage.AddDependency(Mana, Intelligence);
+
+            ResetHealth();
         }
 
         private PreprocessorReactiveProperty<int>.Preprocessor GetProprocessor(ReactiveProperty<int> characteristic)
@@ -77,6 +80,21 @@ namespace Puhinsky.DND.Models
         private int GetPointsWithout(ReactiveProperty<int> value)
         {
             return _staticCharacteristics.Where(x => x != value).Sum(x => x.Value);
+        }
+
+        public void ApplyDamage(int damage)
+        {
+            Health.Value -= damage;
+        }
+
+        public void ApplyHeal(int heal)
+        {
+            Health.Value += heal;
+        }
+
+        public void ResetHealth()
+        {
+            Health.Value = DefaultHealth.Value;
         }
     }
 }
