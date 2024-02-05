@@ -6,9 +6,10 @@
 
         private Preprocessor _preprocessor;
 
-        public PreprocessorReactiveProperty(Preprocessor preprocessor, T value) : base(value)
+        public PreprocessorReactiveProperty(Preprocessor preprocessor, T value)
         {
             _preprocessor = preprocessor;
+            SetWithoutNotify(value);
         }
 
         public PreprocessorReactiveProperty(Preprocessor preprocessor)
@@ -17,6 +18,7 @@
         }
 
         public PreprocessorReactiveProperty(T value) : base(value) { }
+
         public PreprocessorReactiveProperty() { }
 
         public override T Value
@@ -33,12 +35,13 @@
 
         public override void SetWithoutNotify(T value)
         {
-            SetWithoutNotify(_preprocessor(value));
+            base.SetWithoutNotify(_preprocessor(value));
         }
 
         public void SetPreprocessor(Preprocessor preprocessor)
         {
             _preprocessor = preprocessor;
+            Value = Value;
         }
     }
 }
