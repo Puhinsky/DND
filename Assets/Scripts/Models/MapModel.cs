@@ -14,14 +14,6 @@ namespace Puhinsky.DND.Models
         public MapModel()
         {
             PixelsPerUnit = new((x) => Mathf.Clamp(x, MinPixelPerUnit, MaxPixelPerUnit), 100);
-
-            /*PixelsPerUnit.Changed += (int value) =>
-            {
-                if (value < MinPixelPerUnit)
-                    PixelsPerUnit.Value = MinPixelPerUnit;
-                else if (value > MaxPixelPerUnit)
-                    PixelsPerUnit.Value = MaxPixelPerUnit;
-            };*/
         }
     }
 }

@@ -5,7 +5,7 @@ using UnityEngine.UIElements;
 
 namespace Puhinsky.DND.Core
 {
-    public class ReactiveProperty<T>
+    public class ReactiveProperty<T> : IVisualBindable
     {
         public event Action<T> Changed;
         public event Action TypelessChanged;
