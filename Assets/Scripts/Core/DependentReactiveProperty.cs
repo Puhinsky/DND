@@ -1,5 +1,8 @@
-﻿namespace Puhinsky.DND.Core
+﻿using System;
+
+namespace Puhinsky.DND.Core
 {
+    [Serializable]
     public class DependentReactiveProperty<T> : ReactiveProperty<T>
     {
         public delegate T ReactiveExpression();
@@ -10,6 +13,8 @@
         {
             _expression = expression;
         }
+
+        public override T Value { get => base.Value; }
 
         public void AddDependency<D>(params ReactiveProperty<D>[] dependencies)
         {

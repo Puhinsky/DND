@@ -5,12 +5,13 @@ using UnityEngine.UIElements;
 
 namespace Puhinsky.DND.Core
 {
+    [Serializable]
     public class ReactiveProperty<T> : IVisualBindable
     {
         public event Action<T> Changed;
         public event Action TypelessChanged;
 
-        private T _value;
+        [SerializeField] private T _value;
 
         [SerializeField]
         public virtual T Value
