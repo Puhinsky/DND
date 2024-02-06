@@ -1,7 +1,10 @@
 using Puhinsky.DND.Core;
+using System;
+using UnityEngine;
 
 namespace Puhinsky.DND.Models
 {
+    [Serializable]
     public class NPCModel : Character
     {
         public override ReactiveProperty<int> Power => _power;
@@ -12,13 +15,13 @@ namespace Puhinsky.DND.Models
         public override ReactiveProperty<int> Fortune => _fortune;
         public override ReactiveProperty<int> Charisma => _charisma;
 
-        private readonly MinBoundedIntegerProperty _power = new();
-        private readonly MinBoundedIntegerProperty _agility = new();
-        private readonly MinBoundedIntegerProperty _intelligence = new();
-        private readonly MinBoundedIntegerProperty _stamina = new();
-        private readonly MinBoundedIntegerProperty _magic = new();
-        private readonly MinBoundedIntegerProperty _fortune = new();
-        private readonly MinBoundedIntegerProperty _charisma = new();
+        [SerializeField] private MinBoundedIntegerProperty _power = new();
+        [SerializeField] private MinBoundedIntegerProperty _agility = new();
+        [SerializeField] private MinBoundedIntegerProperty _intelligence = new();
+        [SerializeField] private MinBoundedIntegerProperty _stamina = new();
+        [SerializeField] private MinBoundedIntegerProperty _magic = new();
+        [SerializeField] private MinBoundedIntegerProperty _fortune = new();
+        [SerializeField] private MinBoundedIntegerProperty _charisma = new();
 
         public NPCModel()
         {

@@ -1,12 +1,14 @@
 using Puhinsky.DND.Core;
+using System;
 using UnityEngine;
 
 namespace Puhinsky.DND.Models
 {
+    [Serializable]
     public class Character : ICharacter
     {
-        public ReactiveProperty<string> Name { get; protected set; }
-        public ReactiveProperty<Color> Color { get; protected set; }
+        [field: SerializeField] public ReactiveProperty<string> Name { get; protected set; }
+        [field: SerializeField] public ReactiveProperty<Color> Color { get; protected set; }
 
         public virtual ReactiveProperty<int> Power { get; }
 
@@ -34,13 +36,13 @@ namespace Puhinsky.DND.Models
 
         public ReactiveProperty<int> Health { get; }
 
-        private readonly DependentReactiveProperty<int> _damage;
-        private readonly DependentReactiveProperty<int> _mana;
-        private readonly DependentReactiveProperty<int> _speed;
-        private readonly DependentReactiveProperty<int> _evasion;
-        private readonly DependentReactiveProperty<int> _magicDamage;
+        [SerializeField] private DependentReactiveProperty<int> _damage;
+        [SerializeField] private DependentReactiveProperty<int> _mana;
+        [SerializeField] private DependentReactiveProperty<int> _speed;
+        [SerializeField] private DependentReactiveProperty<int> _evasion;
+        [SerializeField] private DependentReactiveProperty<int> _magicDamage;
+        [SerializeField] private DependentReactiveProperty<int> _defaultHealth;
         private readonly MinBoundedIntegerProperty _health = new();
-        private readonly DependentReactiveProperty<int> _defaultHealth;
 
         public Character()
         {

@@ -1,8 +1,10 @@
 using Puhinsky.DND.Core;
+using System;
 using UnityEngine;
 
 namespace Puhinsky.DND.Models
 {
+    [Serializable]
     public class MinBoundedIntegerProperty : PreprocessorReactiveProperty<int>
     {
         private readonly int _minValue;
