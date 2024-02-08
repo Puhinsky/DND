@@ -1,8 +1,9 @@
+using Puhinsky.DND.Core;
 using UnityEditor;
 using UnityEditor.UIElements;
 using UnityEngine.UIElements;
 
-namespace Puhinsky.DND.Core
+namespace Puhinsky.DND.Editor
 {
     [CustomPropertyDrawer(typeof(ReactiveProperty<>), true)]
     public class ReactivePropertyDrawer : PropertyDrawer

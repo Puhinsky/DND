@@ -6,7 +6,7 @@ namespace Puhinsky.DND.UI
 {
     public class PlayerSelectionController : VisualElement
     {
-        private PlayerModel _player;
+        private ICharacter _character;
 
         private readonly Foldout _foldout = new() { value = false };
         private readonly UnsignedIntegerField _appliedDamage = new() { label = "Нанести" };
@@ -42,7 +42,7 @@ namespace Puhinsky.DND.UI
             damageContainer.Add(_applyDamage);
             _applyDamage.clicked += () =>
             {
-                _player.ApplyDamage((int)_appliedDamage.value);
+                _character.ApplyDamage((int)_appliedDamage.value);
                 _appliedDamage.value = 0;
             };
 
@@ -52,11 +52,11 @@ namespace Puhinsky.DND.UI
             healContainer.Add(_applyHeal);
             _applyHeal.clicked += () =>
             {
-                _player.ApplyHeal((int)_appliedHeal.value);
+                _character.ApplyHeal((int)_appliedHeal.value);
                 _appliedHeal.value = 0;
             };
 
-            _resetHealth.clicked += () => _player.ResetHealth();
+            _resetHealth.clicked += () => _character.ResetHealth();
 
             var scrollView = new ScrollView();
 
@@ -81,28 +81,28 @@ namespace Puhinsky.DND.UI
             AddToClassList(_playerSelectCssClass);
         }
 
-        private void OnPlayerSelected(PlayerModel player)
+        private void OnPlayerSelected(ICharacter character)
         {
-            _player = player;
+            _character = character;
 
-            player.Name.BindView(_foldout, nameof(_foldout.text), BindingMode.ToTarget);
-            _foldout.style.color = player.Color.Value;
-            player.Power.BindView(_power, nameof(_power.value), BindingMode.ToTarget);
-            player.Agility.BindView(_agility, nameof(_agility.value), BindingMode.ToTarget);
-            player.Intelligence.BindView(_intelligence, nameof(_intelligence.value), BindingMode.ToTarget);
-            player.Stamina.BindView(_stamina, nameof(_stamina.value), BindingMode.ToTarget);
-            player.Magic.BindView(_magic, nameof(_magic.value), BindingMode.ToTarget);
-            player.Fortune.BindView(_fortune, nameof(_fortune.value), BindingMode.ToTarget);
-            player.Charisma.BindView(_charisma, nameof(_charisma.value), BindingMode.ToTarget);
-            player.Damage.BindView(_damage, nameof(_damage.value), BindingMode.ToTarget);
-            player.Mana.BindView(_mana, nameof(_mana.value), BindingMode.ToTarget);
-            player.Health.BindView(_health, nameof(_health.value), BindingMode.ToTarget);
-            player.Speed.BindView(_speed, nameof(_speed.value), BindingMode.ToTarget);
-            player.Evasion.BindView(_evasion, nameof(_evasion.value), BindingMode.ToTarget);
-            player.MagicDamage.BindView(_magicDamage, nameof(_magicDamage.value), BindingMode.ToTarget);
+            _character.Name.BindView(_foldout, nameof(_foldout.text), BindingMode.ToTarget);
+            _foldout.style.color = _character.Color.Value;
+            _character.Power.BindView(_power, nameof(_power.value), BindingMode.ToTarget);
+            _character.Agility.BindView(_agility, nameof(_agility.value), BindingMode.ToTarget);
+            _character.Intelligence.BindView(_intelligence, nameof(_intelligence.value), BindingMode.ToTarget);
+            _character.Stamina.BindView(_stamina, nameof(_stamina.value), BindingMode.ToTarget);
+            _character.Magic.BindView(_magic, nameof(_magic.value), BindingMode.ToTarget);
+            _character.Fortune.BindView(_fortune, nameof(_fortune.value), BindingMode.ToTarget);
+            _character.Charisma.BindView(_charisma, nameof(_charisma.value), BindingMode.ToTarget);
+            _character.Damage.BindView(_damage, nameof(_damage.value), BindingMode.ToTarget);
+            _character.Mana.BindView(_mana, nameof(_mana.value), BindingMode.ToTarget);
+            _character.Health.BindView(_health, nameof(_health.value), BindingMode.ToTarget);
+            _character.Speed.BindView(_speed, nameof(_speed.value), BindingMode.ToTarget);
+            _character.Evasion.BindView(_evasion, nameof(_evasion.value), BindingMode.ToTarget);
+            _character.MagicDamage.BindView(_magicDamage, nameof(_magicDamage.value), BindingMode.ToTarget);
         }
 
-        private void OnPlayerDeselected(PlayerModel player)
+        private void OnPlayerDeselected(ICharacter character)
         {
             _foldout.style.color = Color.gray;
         }

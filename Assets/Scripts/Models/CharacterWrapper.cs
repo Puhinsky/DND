@@ -16,7 +16,9 @@ namespace Puhinsky.DND.Models
 
         [SerializeField] private T _preview = new();
 
-        public T InstantiateCharacter()
+        public T Preview => _preview;
+
+        public T Instantiate()
         {
             var character = new T();
             SetCharacteristics(character);

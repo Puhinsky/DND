@@ -129,9 +129,11 @@ GameObject:
   - component: {fileID: 2908934470578514568}
   - component: {fileID: 8467270592601226093}
   - component: {fileID: 5582968507763699594}
-  - component: {fileID: 5964277888014321157}
+  - component: {fileID: 7476326035919515564}
+  - component: {fileID: 5402059219948955828}
+  - component: {fileID: 5942006767067687809}
   m_Layer: 0
-  m_Name: Player
+  m_Name: Character
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -244,7 +246,7 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_Radius: 0.5
---- !u!114 &5964277888014321157
+--- !u!114 &7476326035919515564
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -253,7 +255,31 @@ MonoBehaviour:
   m_GameObject: {fileID: 4538874207172250145}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3f65b6d1688a37045981726a7d0c289c, type: 3}
+  m_Script: {fileID: 11500000, guid: 7609956d0eb1bfc45a88d3748512ed65, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5402059219948955828
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4538874207172250145}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de4587ab5ecb7b748a085e03e4b54090, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5942006767067687809
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4538874207172250145}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61ef1e27dfb3b4c469ae7bc5cb4497a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _label: {fileID: 3423296408342971741}

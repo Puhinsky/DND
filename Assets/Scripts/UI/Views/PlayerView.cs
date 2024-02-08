@@ -67,7 +67,10 @@ namespace Puhinsky.DND.UI
 
         public static PlayerView Instance()
         {
-            return Instantiate(Resources.Load<PlayerView>("Player")).GetComponent<PlayerView>();
+            var view = Instantiate(Resources.Load<PlayerView>("Player")).GetComponent<PlayerView>();
+            view.transform.position = new Vector3(Camera.main.transform.position.x, Camera.main.transform.position.y, 0f);
+
+            return view;
         }
 
         public void BindModel(PlayerModel model)

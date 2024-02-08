@@ -19,7 +19,7 @@ namespace Puhinsky.DND.UI
             var root = GetComponent<UIDocument>().rootVisualElement;
 
             _gameContainer = new();
-            _gameContainer.style.flexDirection = FlexDirection.Row;
+            //_gameContainer.style.flexDirection = FlexDirection.Row;
             _gameContainer.style.flexGrow = 1;
             _gameContainer.AddToClassList(_gameContainerCssClass);
 
@@ -34,8 +34,8 @@ namespace Puhinsky.DND.UI
             var mapSetupController = new MapSetupController();
             _setupContainer.Add(mapSetupController);
 
-            var bottomPanelController = new BottomPanelController();
-            _gameContainer.Add(bottomPanelController);
+            _gameContainer.Add(new TopPanelController());
+            _gameContainer.Add(new BottomPanelController());
 
             root.Add(_gameContainer);
             root.Add(_setupContainer);

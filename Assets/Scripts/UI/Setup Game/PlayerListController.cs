@@ -8,7 +8,7 @@ namespace Puhinsky.DND.UI
     [UxmlElement]
     public partial class PlayerListController : ListController<PlayerModel, PlayerUiView>
     {
-        private readonly List<PlayerView> _gameViews = new();
+        private readonly List<CharacterView> _gameViews = new();
 
         private const string _itemCssClass = "player";
         private const string _listCssClass = "player-list";
@@ -32,7 +32,7 @@ namespace Puhinsky.DND.UI
 
         protected override void OnModelAdded()
         {
-            var view = PlayerView.Instance();
+            var view = CharacterView.Instance();
             _gameViews.Add(view);
             view.BindModel(Models.Last());
         }

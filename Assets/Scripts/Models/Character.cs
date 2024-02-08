@@ -11,30 +11,19 @@ namespace Puhinsky.DND.Models
         [field: SerializeField] public ReactiveProperty<Color> Color { get; protected set; }
 
         public virtual ReactiveProperty<int> Power { get; }
-
         public virtual ReactiveProperty<int> Agility { get; }
-
         public virtual ReactiveProperty<int> Intelligence { get; }
-
         public virtual ReactiveProperty<int> Stamina { get; }
-
         public virtual ReactiveProperty<int> Magic { get; }
-
         public virtual ReactiveProperty<int> Fortune { get; }
-
         public virtual ReactiveProperty<int> Charisma { get; }
-
         public ReactiveProperty<int> Damage => _damage;
-
         public ReactiveProperty<int> Mana => _mana;
-
         public ReactiveProperty<int> Speed => _speed;
-
         public ReactiveProperty<int> Evasion => _evasion;
-
         public ReactiveProperty<int> MagicDamage => _magicDamage;
-
-        public ReactiveProperty<int> Health { get; }
+        public ReactiveProperty<int> Health => _health;
+        public ReactiveProperty<int> DefaultHealth => _defaultHealth;
 
         [SerializeField] private DependentReactiveProperty<int> _damage;
         [SerializeField] private DependentReactiveProperty<int> _mana;
@@ -68,17 +57,17 @@ namespace Puhinsky.DND.Models
             ResetHealth();
         }
 
-        public void ApplyDamage(int damage)
+        public virtual void ApplyDamage(int damage)
         {
             _health.Value -= damage;
         }
 
-        public void ApplyHeal(int heal)
+        public virtual void ApplyHeal(int heal)
         {
            _health.Value += heal;
         }
 
-        public void ResetHealth()
+        public virtual void ResetHealth()
         {
             _health.Value = _defaultHealth.Value;
         }

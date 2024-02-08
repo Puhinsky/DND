@@ -6,12 +6,12 @@ namespace Puhinsky.DND.UI
 {
     public class PlayerSelectionHandler : MonoBehaviour
     {
-        public Action<PlayerModel> PlayerSelected { get; set; }
-        public Action<PlayerModel> PlayerDeselected { get; set; }
+        public Action<ICharacter> PlayerSelected { get; set; }
+        public Action<ICharacter> PlayerDeselected { get; set; }
 
-        private PlayerModel _selectedPlayer;
+        private ICharacter _selectedPlayer;
 
-        public void OnPlayerMouseDown(PlayerModel model)
+        public void OnPlayerMouseDown(ICharacter model)
         {
             if (_selectedPlayer != model)
             {
@@ -19,9 +19,10 @@ namespace Puhinsky.DND.UI
             }
         }
 
-        public void OnPlayerMouseUp(PlayerModel model)
+        public void OnPlayerMouseUp(ICharacter model)
         {
-            if (_selectedPlayer == model) {
+            if (_selectedPlayer == model)
+            {
                 PlayerDeselected?.Invoke(model);
                 _selectedPlayer = null;
             }

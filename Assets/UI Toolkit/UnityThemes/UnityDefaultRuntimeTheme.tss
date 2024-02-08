@@ -5,6 +5,8 @@
 @import url("/Assets/UI/Css/root-style.uss");
 @import url("/Assets/UI/Css/dice-style.uss");
 @import url("/Assets/UI/Css/player-select-style.uss");
+@import url("/Assets/UI/Css/npc-select-style.uss");
+
 
 
 

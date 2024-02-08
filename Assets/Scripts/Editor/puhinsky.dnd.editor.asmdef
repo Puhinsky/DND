@@ -1,0 +1,18 @@
+{
+    "name": "puhinsky.dnd.editor",
+    "rootNamespace": "Puhinsky.DND.Editor",
+    "references": [
+        "GUID:1cb6911ad89f3954db4d9489d07385d8"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": true,
+    "precompiledReferences": [],
+    "autoReferenced": false,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

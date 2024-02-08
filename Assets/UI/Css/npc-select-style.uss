@@ -1,0 +1,47 @@
+.npc-select {
+    font-size: 32px;
+    color: rgb(255, 255, 255);
+    -unity-font-style: bold;
+    -unity-text-outline-width: 1px;
+    -unity-text-outline-color: rgb(0, 0, 0);
+    text-shadow: 1px 1px 1px rgb(0, 0, 0);
+    border-left-color: rgb(0, 0, 0);
+    border-right-color: rgb(0, 0, 0);
+    border-top-color: rgb(0, 0, 0);
+    border-bottom-color: rgb(0, 0, 0);
+    border-top-width: 2px;
+    border-right-width: 2px;
+    border-bottom-width: 2px;
+    border-left-width: 2px;
+    border-top-left-radius: 16px;
+    border-top-right-radius: 16px;
+    border-bottom-right-radius: 16px;
+    border-bottom-left-radius: 16px;
+    -unity-text-align: upper-center;
+    background-image: resource('Paper');
+    -unity-background-scale-mode: scale-and-crop;
+    -unity-background-image-tint-color: rgb(166, 166, 166);
+    max-height: 600px;
+}
+
+.npc-select #unity-content-container {
+    max-width: 800px;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+
+.npc-select .npc-template {
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.npc-select .npc-template__icon {
+    width: 160px;
+    height: 160px;
+}
+
+.npc-select #unity-checkmark {
+    -unity-background-image-tint-color: rgb(255, 255, 255);
+    background-image: resource('joystick');
+    width: 48px;
+    height: 48px;
+}
