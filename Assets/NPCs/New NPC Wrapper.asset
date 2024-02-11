@@ -1,0 +1,54 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a66b3a36d185c24080f609d7dc2bc5f, type: 3}
+  m_Name: New NPC Wrapper
+  m_EditorClassIdentifier: 
+  _name: "\u041F\u0438\u0434\u043E\u0440"
+  _color: {r: 1, g: 1, b: 1, a: 1}
+  _power: 220
+  _agility: 3
+  _intelligence: 2
+  _stamina: 150
+  _magic: 0
+  _fortune: 11
+  _charisma: 5
+  _preview:
+    <Name>k__BackingField:
+      _value: "\u041F\u0438\u0434\u043E\u0440"
+    <Color>k__BackingField:
+      _value: {r: 1, g: 1, b: 1, a: 1}
+    _damage:
+      _value: 441
+    _mana:
+      _value: 10
+    _speed:
+      _value: 460
+    _evasion:
+      _value: 14
+    _magicDamage:
+      _value: 7
+    _defaultHealth:
+      _value: 3710
+    _power:
+      _value: 220
+    _agility:
+      _value: 3
+    _intelligence:
+      _value: 2
+    _stamina:
+      _value: 150
+    _magic:
+      _value: 0
+    _fortune:
+      _value: 11
+    _charisma:
+      _value: 5
