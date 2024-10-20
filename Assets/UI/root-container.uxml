@@ -4,5 +4,8 @@
     <Style src="project://database/Assets/UI/Css/root-style.uss?fileID=7433441132597879392&amp;guid=d871b9e89c215e34d8bfc52bf97ce1a2&amp;type=3#root-style" />
     <Style src="project://database/Assets/UI/Css/dice-style.uss?fileID=7433441132597879392&amp;guid=7bbb1ca67a0e1b144bb36da73936c662&amp;type=3#dice-style" />
     <Style src="project://database/Assets/UI/Css/player-select-style.uss?fileID=7433441132597879392&amp;guid=197533e79a1acf54cb81fb1c9932368c&amp;type=3#player-select-style" />
+    <Style src="project://database/Assets/UI/Css/npc-select-style.uss?fileID=7433441132597879392&amp;guid=81cb568577293b744b6316425c9787a3&amp;type=3#npc-select-style" />
     <Puhinsky.DND.UI.DiceController />
+    <ui:IntegerField label="Integer Field" value="42" select-all-on-mouse-up="false" select-all-on-focus="false" select-word-by-double-click="false" select-line-by-triple-click="false" emoji-fallback-support="false" enabled="true" readonly="false" auto-correction="false" />
+    <ui:ListView header-title="fgfgfgf" />
 </ui:UXML>

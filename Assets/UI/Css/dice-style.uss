@@ -63,9 +63,13 @@
 
 .dice__volume-toggle #unity-checkmark {
     background-image: resource('volume disable');
-    background-color: rgba(0,0,0,0);
+    background-color: rgba(0, 0, 0, 0);
     width: 48px;
     height: 48px;
+    border-left-width: 0;
+    border-right-width: 0;
+    border-top-width: 0;
+    border-bottom-width: 0;
 }
 
 .dice__volume-toggle:checked #unity-checkmark {
